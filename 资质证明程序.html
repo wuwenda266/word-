@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>欢迎程序</title>
+  <style>
+    body{
+      background-color: rgb(49, 48, 48);
+    }
+    .body{
+      background-color: #f0f0f0;
+      font-family: '幼圆';
+      font-weight: 900;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      margin-top: 200px;
+    }
+    .head{
+      text-align: center;
+      font-size: 30px;
+      line-height: 100px;
+    }
+    .head1{
+      text-align: center;
+      font-size: 30px;
+      line-height: 100px;
+    }
+    .countdown{
+      text-align: center;
+      font-size: 30px;
+      line-height: 100px;
+    }
+    .next{
+      color: green;
+    }
+    .progress-bar-container {
+    width: 100%;
+    background-color: #f3f3f3;
+    border: 1px solid #ccc;
+    position: relative;
+    border-radius: 20px;
+    }
+    .progress-bar {
+    height: 30px;
+    background-color: #4CAF50;
+    width: 0%;
+    transition: width 0.5s;
+    border-radius: 20px;
+    }  
+    .progress{
+      text-align: center;
+      font-size: 30px;
+      line-height: 100px;
+    }
+ 
+.loader-inner {
+	width: 100px;
+	height: 100px;
+	display: block;
+	position: absolute;
+	top: 10%;
+	left: 50%;
+	margin-left: -50px;
+	margin-top: -50px;
+	z-index: 9999;
+
+	.spinner {
+		width: 100%;
+		height: 100%;
+     position: absolute;
+     top: 0;
+     left: 0%;
+     border: solid 1px #8BD0EF;
+     border-radius: 50%;
+	}
+
+	.blue, .white {
+		width: 80%;
+		height: 80%;
+		border-radius: 50%;
+		display: block;
+		position: absolute;
+		top: 10%;
+		left: 10%;	
+	}
+
+	.blue { 
+		background: #8bd0ef;
+		animation: blueloader 1.4s infinite linear;
+	}
+	.white { 
+		background: #fff;
+		animation: whiteloader 1.4s infinite linear;
+	}
+	.static {
+		z-index: 100;
+		transform: scale(1);
+	}
+	.active {
+		z-index: 200;
+		transform: scale(0.1);
+	}
+}
+.green-progress-bar {
+      background-color: green !important;
+    }
+
+@keyframes spin {
+	0%{
+		transform: rotate(0deg);
+	}
+	100%{
+		transform: rotate(359deg);
+	}
+}
+
+@keyframes blueloader {
+	0%{
+		z-index: 100;
+		transform: scale(1);
+	}
+	50%{
+		z-index: 100;
+		transform: scale(1);
+	}
+	51%{
+		z-index: 200;
+		transform: scale(0);
+	}
+	100%{
+		z-index: 200;
+		transform: scale(1);
+	}
+}
+
+@keyframes whiteloader {
+	0%{
+		z-index: 200;
+		transform: scale(0);
+	}
+	50%{
+		z-index: 200;
+		transform: scale(1);
+	}
+	51%{
+		z-index: 100;
+		transform: scale(1);
+	}
+	100%{
+		z-index: 100;
+		transform: scale(1);
+	}
+}
+.pulse {
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+  </style>
+</head>
+<body>
+  <div class="loader">
+    <div class="loader-inner">
+      <!--<img src="https://tomdoesdesign.co.uk/libs/images/loading.svg">-->
+      <div class="spinner"></div>
+      <div class="blue static"></div>
+      <div class="white active"></div>
+    </div>
+  </div>
+  <div class="body">
+  <div class="head">欢迎使用word文档密码破解系统！</div>
+  <div class="head1">用户诉求:1</div>
+  <div class="progress">订单号：</div>
+  <div class="countdown pulse">正在自动分析诉求合法性...</div>
+  <div class="progress-bar-container">
+    <div class="progress-bar"></div>
+  </div>
+  </div>  
+  <script>
+    let progress = document.querySelector('.progress');
+    let random = Math.floor(Math.random()*10000000000000000);
+    progress.innerHTML = `订单号：${random}`;
+  alert('欢迎使用word文档密码破解系统！本程序来自GitHub @wuwenda266');
+  alert('本程序主要用于word文档密码破解，未经允许，严禁倒卖和非法使用！');
+
+  while (true) {
+    let a = prompt('请告诉我们您为何想要破解密码:(请输入合法的诉求，以便于我们为您处理(规定为15个字符以上的汉字))');
+    if (a === '') {
+    alert('您没有输入诉求，我们无法为您处理，请重新输入！');
+    continue;
+    }
+    if (a === '' || !/^(?![\u4e00-\u9fff\u3002\uff01-\uff1f\u300a\u300b\u2018\u2019\u201c\u201d\u300e\u300f\u3010\u3011]{15,}$)[\s\S]/.test(a)) {
+    alert(`好的，我们收到了您的诉求，我们得知您想要破解密码的原因为: ${a}`);
+    let head1 = document.querySelector('.head1');
+    head1.innerHTML = `用户诉求: ${a}`;
+    break;
+    } else {
+    alert('鉴于您的诉求不符合要求，我们将不允许您使用本软件。');
+    window.location.href = 'about:blank';;
+    break;
+    }
+  }
+  
+  setTimeout(() => {
+      document.querySelector('.countdown').classList.add('next', 'pulse'); 
+    }, 4000);
+document.querySelector('.countdown').innerHTML = '正在自动分析诉求合法性...';
+
+setTimeout(() => {
+    let num = 10;
+    let countdownInterval = setInterval(() => {
+        let countdown = document.querySelector('.countdown');
+        countdown.innerHTML = num > 0 ? `检测到您的诉求合规，${num}秒后将自动跳转至主程序` : '正在自动分析诉求合法性...';
+        countdown.classList.add('next');
+        document.querySelector('.countdown').classList.remove('pulse');
+        num--;
+        
+        if (num < 0) {
+            clearInterval(countdownInterval);
+            simulateProgress(); 
+        }
+    }, 1000);
+}, 3000); 
+
+  function simulateProgress() {
+  setTimeout(() => { 
+    let progressBar = document.querySelector('.progress-bar');
+    let width = 0;
+    const interval = setInterval(frame, 200);
+
+    function frame() {
+  if (width >= 100) {
+    clearInterval(interval);
+    setTimeout(colorFadeOut, 0);
+  } else {
+    width += 2.18;
+    progressBar.style.width = width + '%';
+    if (width >= 60 && width <= 100 + 3 * 2.18) {
+      progressBar.classList.add('green-progress-bar');
+    }
+  }
+}
+
+function colorFadeOut() {
+  const fadeSteps = 100;
+  const stepDuration = 2000 / fadeSteps; 
+  for (let i = 0; i <= fadeSteps; i++) {
+    const greenPercentage = (100 - 3) / fadeSteps * i;
+    progressBar.style.backgroundColor = `rgba(0, 173, 0, ${greenPercentage / 100})`;
+    setTimeout(() => {}, stepDuration * i); 
+  }
+  setTimeout(() => progressBar.classList.remove('green-progress-bar'), stepDuration * fadeSteps);
+}
+
+    frame(); 
+  }, 4000); 
+
+  setTimeout(function () {
+    window.location.href = './主程序.html';
+  }, 13250);
+}
+
+simulateProgress();
+  </script>
+</body>
+</html>
